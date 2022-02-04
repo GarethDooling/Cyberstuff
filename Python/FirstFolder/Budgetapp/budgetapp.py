@@ -1,14 +1,23 @@
-class Budget():
-    def __init__(self, balance):
-        self.balance = balance
+from budgetclass import Budget
 
-    def __repr__(self):
-        return f"The remaining budget is {self.balance}."
+food = Budget(200)
+bills = Budget(150)
+entertainment = Budget(400)
 
-    def withdraw(self, amount):
-        self.balance -= amount 
-        return amount 
+print(food)
+print(bills)
+print(entertainment)
 
-    def deposit(self, amount):
-        self.balance += amount
-        return amount 
+food.withdraw(50)
+print()
+print(food)
+
+food.deposit(500)
+print()
+print(food)
+
+entertainment.deposit(food.withdraw(50))
+
+print()
+print(food)
+print(entertainment)
