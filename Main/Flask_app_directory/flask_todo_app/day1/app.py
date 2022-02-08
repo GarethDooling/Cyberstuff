@@ -9,14 +9,12 @@ db = SQLAlchemy(app)
 
 class Todos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    task = db.Column(db.String(30), nullable=True)
+    task = db.Column(db.String(30), unique=True)
     completed = db.Column(db.Boolean, default=False)
 
-db.drop_all()
 db.create_all()
-
 sample_todo= Todos(
-    task = "Sample todo.",
+    task = "Sample todo",
     completed = False
 )
 db.session.add(sample_todo)
@@ -34,8 +32,3 @@ def add():
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
-
-
-
-
-

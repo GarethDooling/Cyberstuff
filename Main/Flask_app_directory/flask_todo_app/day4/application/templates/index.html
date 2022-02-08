@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+    <div>
+        <form action="{{ url_for('index') }}" method='POST'>
+            {{ form.order }}
+            {{ form.submit }}
+        </form>
+        {% for todo in todos %}
+
+            {{ todo.task }}
+            {% if todo.complete == True %}
+                &#9989
+                <form action='{{ url_for('incomplete', id=todo.id) }}'>
+                <input type=submit value="InComplete">
+                </form>
+            {% else %}
+                <form action='{{ url_for('complete', id=todo.id) }}'>
+                <input type=submit value="Complete">
+                </form>
+            {% endif %}
+            <form action='{{ url_for('update', id=todo.id) }}'>
+            <input type=submit value="Change">
+            </form>
+            <form action='{{ url_for('delete', id=todo.id) }}'>
+            <input type=submit value="Delete">
+            </form>
+            <br>
+
+        {% endfor %}
+    <div>
+{% endblock body_content %}

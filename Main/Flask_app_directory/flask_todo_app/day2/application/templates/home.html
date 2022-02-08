@@ -1,0 +1,10 @@
+
+<h1>Todo List App</h1>
+{% for todo in all_todos %}
+
+{{ todo.task }}
+{% if todo.completed %}
+&#9989
+{% endif %}
+<br>
+{% endfor %}
