@@ -6,11 +6,7 @@ from wtforms.validators import DataRequired, ValidationError
 from application.models import Todos 
 
 class TodoForm(FlaskForm):
-    task = StringField('Task',
-        validators = [
-            DataRequired()
-        ]
-    )
+    task = StringField('Task', validators = [DataRequired()])
     submit = SubmitField('Todo')
 
     def validate_task(self, task):

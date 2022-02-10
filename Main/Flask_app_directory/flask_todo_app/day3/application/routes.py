@@ -5,12 +5,12 @@ from application.models import Todos
 from application.forms import TodoForm
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', method=['POST', 'GET'])
 def index():
     todos = Todos.query.all()
-    return render_template('index.html', title="Todo List App", todos=todos, totals=totals)
+    return render_template('index.html', title="Todo List App", todos=todos)
 
-@app.route('/add', methods=['POST', 'GET'])
+@app.route('/add', method=['POST', 'GET'])
 def add():
     form = TodoForm()
     if form.validate_on_submit():
@@ -49,7 +49,7 @@ def update(id):
         form.task.data = todo.task
     return render_template('update.html', title='Update your todo', form=form)
 
-@app.route('/delete/<int:id>')
+@app.route('/delete/<int:id')
 def delete(id):
     todo = Todos.query.get(id)
     db.session.delete(todo)
