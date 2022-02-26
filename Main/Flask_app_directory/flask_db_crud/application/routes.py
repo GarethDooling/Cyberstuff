@@ -24,19 +24,5 @@ def update(name):
     db.session.commit()
     return first_game.name
 
-zelda = Games(name="zelda")
-db.session.add(zelda)
-db.session.commit()
 
-goldeneye = Games(name='goldeneye')
-db.session.add(goldeneye)
-db.session.commit()
-
-zelda = Games.query.first()
-db.session.delete(zelda)
-db.session.commit
-
-zelda = Games.query.first()
-zelda.name = "zelda two" 
-db.session.commit()
 
